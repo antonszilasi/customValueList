@@ -18,21 +18,15 @@ namespace CustomValueList
 {
     public class CustomValueListAttributes : GH_ValueListAttributes
     {
-        private CustomValueList ownerOfThisAttribute;
+        public CustomValueList ownerOfThisAttribute;
 
-        public CustomValueListAttributes(GH_ValueList owner) : base(owner)
-        {
-            //this.ownerOfThisAttribute = owner;
-        }
+        public List<ToolStripMenuItem> collectionToolStripMenuItems;
 
-        protected override void Render(GH_Canvas canvas, Graphics graphics, GH_CanvasChannel channel)
+        public CustomValueListAttributes(CustomValueList owner) : base(owner)
         {
-            base.Render(canvas, graphics, channel);
-        }
+            this.ownerOfThisAttribute = owner;
 
-        protected override void Layout()
-        {
-            base.Layout();
+            this.collectionToolStripMenuItems = new List<ToolStripMenuItem>();
         }
 
         public override GH_ObjectResponse RespondToMouseDoubleClick(GH_Canvas sender, GH_CanvasMouseEvent e)
@@ -44,40 +38,22 @@ namespace CustomValueList
         {
             if (e.Button == MouseButtons.Left)
             {
-                ToolStripDropDownMenu menu = new ToolStripDropDownMenu();
+                Grasshopper.Kernel.Special.GH_ValueListItem firstSelectedItem = this.Owner.FirstSelectedItem;
+                if (firstSelectedItem.BoxRight.Contains(e.CanvasLocation))
+                 {  ToolStripDropDownMenu menu = new ToolStripDropDownMenu();
+                    menu.AutoClose = true;
 
-                foreach (GH_ValueListItem item in this.ownerOfThisAttribute.ListItems)
-                {
-                    ToolStripMenuItem menuItem = new ToolStripMenuItem(item.Name);
-                    //menuItem.Tag = item.Name;
-                    menuItem.Click += new EventHandler(this.ValueMenuItem_Click);
+                    foreach (ToolStripMenuItem toolStripItem in this.collectionToolStripMenuItems)
+                    {
+                        menu.Items.Add(toolStripItem);
+                    }
 
-                    menu.Items.Add(menuItem);
+                    menu.Show(sender, e.ControlLocation);
+                        
+                    return GH_ObjectResponse.Handled;
                 }
-
-                menu.Show(sender, e.ControlLocation);
-                return GH_ObjectResponse.Handled;
             }
             return base.RespondToMouseDown(sender, e);
-        }
-
-        private void ValueMenuItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item2 = (ToolStripMenuItem)sender;
-            if (!item2.Checked)
-            {
-                //item2.Checked = true;
-                item2.CheckState = CheckState.Checked;
-                //GH_ValueListItem tag = new GH_ValueListItem(item2.Name.ToString(), item2.Name.ToString());
-                //if (tag != null)
-                //{
-                //    this.ownerOfThisAttribute.SelectItem(this.Owner.ListItems.IndexOf(tag));
-                //}
-            }
-            else
-            {
-                item2.CheckState = CheckState.Unchecked;
-            }
         }
     }
 }
