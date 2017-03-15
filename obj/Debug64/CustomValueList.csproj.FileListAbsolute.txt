@@ -1,7 +1,7 @@
+C:\Users\szilasia\Documents\customValueList\obj\Debug64\CustomValueList.csprojResolveAssemblyReference.cache
 C:\Users\szilasia\Documents\customValueList\bin\CustomValueList.dll
 C:\Users\szilasia\Documents\customValueList\bin\CustomValueList.pdb
 C:\Users\szilasia\Documents\customValueList\bin\Newtonsoft.Json.dll
 C:\Users\szilasia\Documents\customValueList\bin\Newtonsoft.Json.xml
 C:\Users\szilasia\Documents\customValueList\obj\Debug64\CustomValueList.dll
 C:\Users\szilasia\Documents\customValueList\obj\Debug64\CustomValueList.pdb
-C:\Users\szilasia\Documents\customValueList\obj\Debug64\CustomValueList.csprojResolveAssemblyReference.cache

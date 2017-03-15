@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom_ValueListItem.cs" />
     <Compile Include="CustomValueList.cs" />
     <Compile Include="Interfaces\BESTDashboardInterface.cs" />
     <Compile Include="Interfaces\BESTDesignInputsInterface.cs" />

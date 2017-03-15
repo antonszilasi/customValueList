@@ -31,6 +31,8 @@ namespace CustomValueList
             this.Description = "The BEST Value List";
             this.Name = "The BBEST Value List";
             this.Category = "Testing";
+            // NickName is the name seen on the Grasshopper canvas 
+            this.NickName = "Testing sfddsfs";
 
             base.ListItems.Clear();
 
@@ -38,7 +40,7 @@ namespace CustomValueList
 
             //base.ListItems.Add(new GH_ValueListItem("21", "21"));
             //base.ListItems.Add(new GH_ValueListItem("22", "22"));
-            base.ListItems.Add(new GH_ValueListItem("23", "23"));
+            //base.ListItems.Add(new GH_ValueListItem("23", "23"));
             base.ListItems.Add(new GH_ValueListItem("24", "24"));
             base.ListItems.Add(new GH_ValueListItem("25", "25"));
             base.ListItems.Add(new GH_ValueListItem("26", "26"));
@@ -116,19 +118,19 @@ namespace CustomValueList
             if (!item2.Checked)
             {
                 item2.Checked = true;
-
+                // Add to Design Space
                 ToolStripDropDownMenu menu = (ToolStripDropDownMenu)item2.Owner;
                 menu.Show();
-
+                this.ExpireSolution(true);
                 return;
             }
             else
             {
                 item2.Checked = false;
-
+                // Remove from Design Space
                 ToolStripDropDownMenu menu = (ToolStripDropDownMenu)item2.Owner;
                 menu.Show();
-
+                this.ExpireSolution(true);
                 return;
             }
         }
